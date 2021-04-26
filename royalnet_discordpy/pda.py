@@ -120,6 +120,7 @@ class DiscordpyPDAImplementation(engi.ConversationListImplementation):
 
     async def run(self) -> t.NoReturn:
         await self.client.login(token=self.bot_token)
+        self._register_events()
         await self.client.connect(reconnect=True)
 
 
