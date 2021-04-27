@@ -318,7 +318,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7)", "win-inet-pton"]
 
 [[package]]
 name = "royalnet"
-version = "6.5.4"
+version = "6.5.5"
 description = "A multipurpose bot framework"
 category = "main"
 optional = false
@@ -530,7 +530,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "34f30c042ae9efcdde3ee1b878d6c0aeadcb3ec571e89a62b28a4d6a92150e7f"
+content-hash = "e58dfc5810fca4d482db91d588c9be4af12f3dfee4b7df4c4dfa872aff074bb5"
 
 [metadata.files]
 aiohttp = [
@@ -835,8 +835,8 @@ requests = [
     {file = "requests-2.25.1.tar.gz", hash = "sha256:27973dd4a904a4f13b263a19c866c13b92a39ed1c964655f025f3f8d3d75b804"},
 ]
 royalnet = [
-    {file = "royalnet-6.5.4-py3-none-any.whl", hash = "sha256:68d30fdd00653a5e79eab2b22a8c5bb16103e08e8674ec8f4b13ff1bdf1d33d2"},
-    {file = "royalnet-6.5.4.tar.gz", hash = "sha256:fbab17b911c2ee200c0f7bfd5d2bcc4d1d3f9771b41ab64a848a08cdd464e3d8"},
+    {file = "royalnet-6.5.5-py3-none-any.whl", hash = "sha256:a204e48f024504a89cd81cefe0dd798f67c89d942a045d2e85552d42f7f362f8"},
+    {file = "royalnet-6.5.5.tar.gz", hash = "sha256:4f9f59d8a1360ee1296c8c8a877e74139996e88ac05001c0f190fdac239991d6"},
 ]
 snowballstemmer = [
     {file = "snowballstemmer-2.1.0-py2.py3-none-any.whl", hash = "sha256:b51b447bea85f9968c13b650126a888aabd4cb4463fca868ec596826325dedc2"},
