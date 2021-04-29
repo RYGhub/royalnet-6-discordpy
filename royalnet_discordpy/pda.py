@@ -3,6 +3,7 @@ The PDA ("main" class) for the :mod:`royalnet_telethon` frontend.
 """
 
 from __future__ import annotations
+
 import royalnet.royaltyping as t
 
 import logging
@@ -50,25 +51,42 @@ class DiscordpyPDAImplementation(engi.ConversationListImplementation):
         .. todo:: Document this.
         """
 
-        self.client: d.Client = d.Client()
+        # noinspection PyMethodParameters
+        class CustomClient(d.Client):
+            async def on_ready(cli):
+                log.debug("CustomClient is ready!")
+
+            async def on_error(self, event_method, *args, **kwargs):
+                log.error(f"An error occoured in CustomClient: {event_method!r} {args!r} {kwargs!r}")
+
+            async def on_message(cli, message: d.Message):
+                log.debug("Triggered on_message, putting in dispenser...")
+
+                await self.put(
+                    key=self._determine_key(message=message),
+                    projectile=DiscordMessageReceived(event=message)
+                )
+
+            async def on_message_edit(cli, message: d.Message):
+                log.debug("Triggered on_message_edit, putting in dispenser...")
+
+                await self.put(
+                    key=self._determine_key(message=message),
+                    projectile=DiscordMessageEdited(event=message)
+                )
+
+            async def on_message_delete(cli, message: d.Message):
+                log.debug("Triggered on_message_delete, putting in dispenser...")
+
+                await self.put(
+                    key=self._determine_key(message=message),
+                    projectile=DiscordMessageDeleted(event=message)
+                )
+
+        self.client: d.Client = CustomClient()
         """
         .. todo:: Document this.        
         """
-
-        self._register_events()
-
-    def _register_events(self):
-        """
-        .. todo:: Document this.
-        """
-
-        self.log.info("Registering Discord.py events...")
-        self.log.debug("Registering on_message...")
-        self.client.on_message = self._on_message
-        self.log.debug("Registering on_message_edit...")
-        self.client.on_message_edit = self._on_message_edit
-        self.log.debug("Registering on_message_delete...")
-        self.client.on_message_delete = self._on_message_delete
 
     def _determine_key(self, message: d.Message):
         """
@@ -90,39 +108,8 @@ class DiscordpyPDAImplementation(engi.ConversationListImplementation):
         else:
             raise TypeError("Invalid mode")
 
-    async def _on_message(self, message: d.Message):
-        """
-        .. todo:: Document this.
-        """
-
-        await self.put(
-            key=self._determine_key(message=message),
-            projectile=DiscordMessageReceived(event=message)
-        )
-
-    async def _on_message_edit(self, message: d.Message):
-        """
-        .. todo:: Document this.
-        """
-
-        await self.put(
-            key=self._determine_key(message=message),
-            projectile=DiscordMessageEdited(event=message)
-        )
-
-    async def _on_message_delete(self, message: d.Message):
-        """
-        .. todo:: Document this.
-        """
-
-        await self.put(
-            key=self._determine_key(message=message),
-            projectile=DiscordMessageDeleted(event=message)
-        )
-
     async def run(self) -> t.NoReturn:
-        await self.client.login(token=self.bot_token)
-        await self.client.connect(reconnect=True)
+        await self.client.start(self.bot_token, bot=True, reconnect=True)
 
 
 __all__ = (
