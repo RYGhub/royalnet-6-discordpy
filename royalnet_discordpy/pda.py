@@ -4,6 +4,7 @@ The PDA ("main" class) for the :mod:`royalnet_telethon` frontend.
 
 from __future__ import annotations
 
+import discord
 import royalnet.royaltyping as t
 
 import logging
@@ -37,7 +38,8 @@ class DiscordpyPDAImplementation(engi.ConversationListImplementation):
         return "discordpy"
 
     def __init__(self, name: str, bot_token: str,
-                 mode: DiscordpyPDAMode = DiscordpyPDAMode.CHANNEL_USER):
+                 mode: DiscordpyPDAMode = DiscordpyPDAMode.CHANNEL_USER,
+                 intents: discord.Intents = discord.Intents.default()):
 
         super().__init__(name=name)
 
@@ -83,7 +85,7 @@ class DiscordpyPDAImplementation(engi.ConversationListImplementation):
                     projectile=DiscordMessageDeleted(event=message)
                 )
 
-        self.client: d.Client = CustomClient()
+        self.client: d.Client = CustomClient(intents=intents)
         """
         .. todo:: Document this.        
         """
