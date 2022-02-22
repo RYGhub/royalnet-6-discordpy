@@ -11,6 +11,8 @@ def ds_markdown_format(string: str) -> str:
     - ``\uE002``: end underline
     - ``\uE015``: start strike
     - ``\uE005``: end strike
+    - ``\uE01F``: start spoiler
+    - ``\uE00F``: end spoiler
     - ``\uE01C``: start single-line code
     - ``\uE00C``: end single-line code
     - ``\uE01D``: start multi-line code
@@ -37,6 +39,8 @@ def ds_markdown_format(string: str) -> str:
     string = string.replace("\uE005", "~~")
     string = string.replace("\uE012", "__")
     string = string.replace("\uE002", "__")
+    string = string.replace("\uE01F", "||")
+    string = string.replace("\uE00F", "||")
     string = string.replace("\uE01C", "`")
     string = string.replace("\uE00C", "`")
     string = string.replace("\uE01D", "```")
