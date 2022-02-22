@@ -45,7 +45,7 @@ class DiscordMessage(co.Message):
         if files is None:
             files = []
 
-        msg = await self._msg.reply(content=ds_markdown_format(text), files=[discord.File(file) for file in files])
+        msg = await self._msg.reply(content=ds_markdown_format(text) if text else None, files=[discord.File(file) for file in files])
         return DiscordMessage(msg=msg)
 
 
