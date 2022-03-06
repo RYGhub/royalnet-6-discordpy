@@ -1,8 +1,8 @@
 from __future__ import annotations
 
+import async_property as ap
 import discord as d
 import royalnet.engineer as engi
-import async_property as ap
 
 from .contents import DiscordMessage
 

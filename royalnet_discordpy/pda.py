@@ -4,13 +4,13 @@ The PDA ("main" class) for the :mod:`royalnet_telethon` frontend.
 
 from __future__ import annotations
 
-import discord
-import royalnet.royaltyping as t
-
-import logging
-import royalnet.engineer as engi
 import enum
+import logging
+
+import discord
 import discord as d
+import royalnet.engineer as engi
+import royalnet.royaltyping as t
 
 from .bullet.projectiles import DiscordMessageReceived, DiscordMessageEdited, DiscordMessageDeleted
 

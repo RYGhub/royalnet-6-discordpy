@@ -1,12 +1,13 @@
 from __future__ import annotations
 
+import datetime
+
+import async_property as ap
 import discord
+import discord as d
+import royalnet.engineer.bullet.contents as co
 import royalnet.royaltyping as t
 
-import royalnet.engineer.bullet.contents as co
-import discord as d
-import async_property as ap
-import datetime
 from royalnet_discordpy.formatting import ds_markdown_format
 
 
@@ -45,7 +46,8 @@ class DiscordMessage(co.Message):
         if files is None:
             files = []
 
-        msg = await self._msg.reply(content=ds_markdown_format(text) if text else None, files=[discord.File(file) for file in files])
+        msg = await self._msg.reply(content=ds_markdown_format(text) if text else None,
+                                    files=[discord.File(file) for file in files])
         return DiscordMessage(msg=msg)
 
 
