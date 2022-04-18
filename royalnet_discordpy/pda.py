@@ -115,5 +115,6 @@ class DiscordpyPDAImplementation(engi.ConversationListImplementation):
 
 
 __all__ = (
+    "DiscordpyPDAMode",
     "DiscordpyPDAImplementation",
 )
