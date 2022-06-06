@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "royalnet-discordpy"
-version = "6.6.2"
+version = "6.6.3"
 description = "A Discord.py-based frontend for the royalnet.engineer module."
 authors = ["Stefano Pigozzi <me@steffo.eu>"]
 license = "AGPL-3.0-or-later"
@@ -17,8 +17,8 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.8"
-royalnet = "~6.6.0"
+python = "^3.10"
+royalnet = "^6.7.1"
 click = "^7.1.2"
 "discord.py" = "^1.7.1"
 
